@@ -177,6 +177,9 @@ version.o: FORCE
 # touch whenever any source file is updated.
 !cflags am version $(VER) -DINCLUDE_EMPTY_H `if test -z "$(VER)" && (cd $(srcdir)/..; md5sum -c manifest >/dev/null 2>&1); then cat $(srcdir)/../version.def; else echo "$(VER)"; fi`
 !begin am
+AUTOMAKE_OPTIONS = subdir-objects
+!end
+!begin am
 BUILT_SOURCES = empty.h
 CLEANFILES = empty.h
 empty.h: $(allsources)
